@@ -242,7 +242,7 @@ export function initScene() {
       character.scale.setScalar(1.2);
       character.position.set(2.0, -1.0, -3.0);
         character.scale.setScalar(1.2);
-        character.rotation.y -= Math.PI  ;
+      character.rotation.y += Math.PI / 1.5;
 
       const allBones = [];
       character.traverse((obj) => {

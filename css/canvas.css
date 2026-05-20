@@ -13,8 +13,6 @@
   --canvas-muted:       #6b7780;
   --canvas-section-bg:  #013035;
   --canvas-bg:          #ffffff;
-  --todo-bg:            #fff4d6;
-  --todo-ink:           #6b4a00;
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -320,16 +318,6 @@ html, body {
   font-size: 12.5px;
   margin-left: 8px;
   font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-}
-
-
-.todo {
-  background: var(--todo-bg);
-  color: var(--todo-ink);
-  padding: 2px 7px;
-  border-radius: 3px;
-  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
-  font-size: 12.5px;
 }
 
 
