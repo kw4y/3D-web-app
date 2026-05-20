@@ -1,0 +1,188 @@
+/* Safari  — macOS Big Sur+ visual language. */
+
+/* Size override — Safari needs more room for full iframe pages */
+.win.win--safari {
+  width: min(1040px, 92vw);
+  height: min(720px, 88vh);
+}
+
+.sf-app {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  background: #f5f5f7;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text",
+               "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+/* tab bar */
+.sf-tabs {
+  display: flex;
+  align-items: flex-end;
+  gap: 1px;
+  padding: 6px 12px 0;
+  background: linear-gradient(180deg, #ececef, #e0e0e3);
+  border-bottom: 1px solid #c8c8cc;
+  min-height: 34px;
+}
+
+.sf-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  height: 27px;
+  background: #d8d8db;
+  border: 1px solid #c0c0c4;
+  border-bottom: none;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  font-size: 12.5px;
+  color: #555;
+  cursor: pointer;
+  min-width: 160px;
+  max-width: 200px;
+  font-family: inherit;
+  white-space: nowrap;
+  position: relative;
+  margin-bottom: -1px;  
+  transition: background 80ms ease, color 80ms ease;
+}
+.sf-tab:hover:not(.is-active) {
+  background: #e0e0e3;
+  color: #1a1a1c;
+}
+.sf-tab.is-active {
+  background: #f3f3f5;      
+  color: #1a1a1c;
+  font-weight: 500;
+  z-index: 2;             
+}
+
+.sf-tab__favicon {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.sf-tab__favicon--submission {
+  background: linear-gradient(135deg, #6fa8dc, #3d85c6);
+}
+.sf-tab__favicon--sitemap {
+  background: linear-gradient(135deg, #93c47d, #6aa84f);
+}
+.sf-tab__favicon--references {
+  background: linear-gradient(135deg, #e69138, #b45f06);
+}
+
+.sf-tab__label {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Toolbar */
+.sf-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 14px;
+  background: linear-gradient(180deg, #f3f3f5, #ebebed);
+  border-bottom: 1px solid #d6d6da;
+}
+
+.sf-nav,
+.sf-actions {
+  display: flex;
+  gap: 2px;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.sf-nav__btn {
+  width: 28px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 0;
+  border-radius: 5px;
+  color: #5a5a5e;
+  cursor: pointer;
+  padding: 0;
+  transition: background 100ms ease;
+}
+.sf-nav__btn:hover:not(:disabled) {
+  background: rgba(0, 0, 0, 0.06);
+  color: #1a1a1c;
+}
+.sf-nav__btn:active:not(:disabled) {
+  background: rgba(0, 0, 0, 0.12);
+}
+.sf-nav__btn:disabled {
+  color: #b4b4b8;
+  cursor: default;
+}
+.sf-nav__btn svg {
+  width: 12px;
+  height: 12px;
+}
+
+/* Url Bar */
+.sf-url-bar {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 10px;
+  height: 26px;
+  background: #ffffff;
+  border: 1px solid #d3d3d8;
+  border-radius: 6px;
+  box-shadow: inset 0 1px 0 rgba(0, 0, 0, 0.03);
+  max-width: 540px;
+  margin: 0 auto;
+}
+
+.sf-url-bar__lock {
+  display: inline-flex;
+  width: 11px;
+  height: 12px;
+  color: #5a5a5e;
+  flex-shrink: 0;
+}
+.sf-url-bar__lock svg { width: 100%; height: 100%; }
+
+.sf-url-bar__url {
+  flex: 1;
+  text-align: center;
+  font-size: 12.5px;
+  color: #1a1a1c;
+  letter-spacing: 0.1px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sf-url-bar__refresh {
+  display: inline-flex;
+  width: 12px;
+  height: 12px;
+  color: #5a5a5e;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+.sf-url-bar__refresh svg { width: 100%; height: 100%; }
+
+/* Iframe */
+.sf-frame {
+  flex: 1;
+  width: 100%;
+  border: none;
+  background: #ffffff;
+  display: block;
+}

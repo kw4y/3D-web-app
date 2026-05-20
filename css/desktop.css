@@ -1,0 +1,247 @@
+
+@font-face {
+  font-family: "SF Pro Display";
+  font-weight: 400;
+  font-style: normal;
+  src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-regular-webfont.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "SF Pro Display";
+  font-weight: 600;
+  font-style: normal;
+  src: url("https://applesocial.s3.amazonaws.com/assets/styles/fonts/sanfrancisco/sanfranciscodisplay-semibold-webfont.woff2") format("woff2");
+  font-display: swap;
+}
+
+body {
+  background: #ffffff;
+  color: rgba(0, 0, 0, 0.88);
+  font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+}
+
+/*  3D scene canvas  */
+.scene-canvas {
+  position: fixed;
+  inset: 0;            /* top:0 right:0 bottom:0 left:0 */
+  width: 100%;
+  height: 100%;
+  display: block;
+  z-index: 0;          /* below menu bar (100) and dock (90) */
+  pointer-events: none;
+}
+
+/*  Menu bar  */
+.menu-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 32px;
+  padding: 0 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(250, 250, 250, 0.92);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  color: rgba(0, 0, 0, 0.88);
+  font-family: "SF Pro Display", -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  z-index: 100;
+  user-select: none;
+}
+
+.menu-bar__left,
+.menu-bar__right {
+  display: flex;
+  align-items: center;
+}
+.menu-bar__left  { gap: 20px; }
+.menu-bar__right { gap: 16px; }
+
+.menu-bar__logo {
+  width: 16px;
+  height: 18px;
+  color: inherit;
+}
+.menu-bar__app  { font-weight: 600; }
+.menu-bar__item { cursor: default; font-weight: 600; }
+
+.menu-bar__icon {
+  display: flex;
+  align-items: center;
+  cursor: default;
+  color: inherit;
+}
+.menu-bar__icon img {
+  width: 20px;
+  height: 16px;
+}
+
+.menu-bar__clock {
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+}
+
+/*  Dock  */
+.dock {
+  position: fixed;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 90;
+}
+
+.dock__list {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  background: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(30px) saturate(180%);
+  -webkit-backdrop-filter: blur(30px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 24px;
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.18),
+    0 0 0 0.5px rgba(0, 0, 0, 0.05);
+  list-style: none;
+  margin: 0;
+}
+
+.dock__list > li {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.dock__item {
+  background: transparent;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+
+  width: 68px;
+  height: 68px;
+  display: grid;
+  place-items: center;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: transform 220ms cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* Tooltip anchor */
+  position: relative;
+}
+.dock__item:focus { outline: none; }
+.dock__item:hover {
+  transform: translateY(-10px) scale(1.12);
+}
+.dock__item img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.18));
+  pointer-events: none;
+}
+
+
+.dock__item::after {
+  content: attr(aria-label);
+  position: absolute;
+  bottom: calc(100% + 12px);  
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  padding: 5px 10px;
+  background: rgba(40, 40, 45, 0.92);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0;
+  white-space: nowrap;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 140ms ease, transform 140ms ease;
+}
+
+
+.dock__item::before {
+  content: "";
+  position: absolute;
+  bottom: calc(100% + 7px);
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid rgba(40, 40, 45, 0.92);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 140ms ease, transform 140ms ease;
+}
+
+.dock__item:hover::after,
+.dock__item:hover::before {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+
+.dock__item:hover::after {
+  transform: translateX(-50%) translateY(0) scale(0.89);  /* 1/1.12 */
+}
+.dock__item:hover::before {
+  transform: translateX(-50%) translateY(0) scale(0.89);
+}
+
+.dock__divider {
+  width: 1px;
+  height: 46px;
+  background: rgba(0, 0, 0, 0.18);
+  margin: 0 4px;
+}
+/* Loading  */
+.loader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;                 
+  display: grid;
+  place-items: center;
+  background: linear-gradient(165deg, #aeb9a4 0%, #6f8267 100%);
+  transition: opacity 600ms ease;
+}
+.loader.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Sprite-strip turntable. */
+.loader__note {
+  width: 132px;
+  height: 132px;
+  background-image: url('../assets/loader-note-strip.png');
+  background-repeat: no-repeat;
+  background-size: 2640px 132px;     /* 20 frames × 132px */
+  background-position: 0 0;
+  filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.28));
+  animation: loader-turn 1.4s steps(20) infinite;
+}
+@keyframes loader-turn {
+  to { background-position-x: -2640px; }   /* one full strip; loops to frame 0 */
+}
+/* Respect reduced-motion: hold a single frame instead of spinning */
+@media (prefers-reduced-motion: reduce) {
+  .loader__note {
+    animation: none;
+    background-position-x: 0;
+  }
+}

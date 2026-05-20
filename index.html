@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3D App</title>
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/desktop.css">
+  <link rel="stylesheet" href="css/window.css">
+  <link rel="stylesheet" href="css/widgets.css">
+
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+      "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+    }
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Loading overlay: 3D chrome music note turntable (rendered in Blender
+       as a 20-frame sprite strip). Visible until every scene asset is in;
+       main.js fades it out on the scene:ready event. -->
+  <div id="loader" class="loader">
+    <div class="loader__note" role="img" aria-label="Loading"></div>
+  </div>
+
+  <canvas id="scene-canvas" class="scene-canvas"></canvas>
+
+  <header class="menu-bar">
+    <div class="menu-bar__left">
+      <img class="menu-bar__logo" src="assets/icons/apple.svg" alt="Apple">
+      <span class="menu-bar__app">Finder</span>
+      <span class="menu-bar__item">File</span>
+      <span class="menu-bar__item">Edit</span>
+      <span class="menu-bar__item">View</span>
+      <span class="menu-bar__item">Go</span>
+      <span class="menu-bar__item">Window</span>
+      <span class="menu-bar__item">Help</span>
+    </div>
+    <div class="menu-bar__right">
+      <span class="menu-bar__icon" aria-label="Wi-Fi">
+        <img src="assets/icons/wifi.svg" alt="">
+      </span>
+      <span class="menu-bar__clock" id="clock">--:--</span>
+    </div>
+  </header>
+
+  <nav class="dock" aria-label="Dock">
+    <ul class="dock__list">
+      <li><button class="dock__item" aria-label="Launchpad">
+        <img src="assets/icons/launchpad.png" alt="">
+      </button></li>
+      <li><button class="dock__item" aria-label="About">
+        <img src="assets/icons/messages.svg" alt="">
+      </button></li>
+      <li><button class="dock__item" aria-label="Safari">
+        <img src="assets/icons/safari.png" alt="">
+      </button></li>
+      <li class="dock__divider" aria-hidden="true"></li>
+      <li><button class="dock__item" aria-label="Spotify">
+        <img src="assets/icons/spotify.png" alt="">
+      </button></li>
+      <li><button class="dock__item" aria-label="Models">
+        <img src="assets/icons/blender.png" alt="">
+      </button></li>
+      <li class="dock__divider" aria-hidden="true"></li>
+      <li><button class="dock__item" aria-label="Bin">
+        <img src="assets/icons/bin.png" alt="">
+      </button></li>
+    </ul>
+  </nav>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>

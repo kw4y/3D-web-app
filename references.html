@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>References - 3D App</title>
+  <link rel="stylesheet" href="css/canvas.css">
+</head>
+<body>
+  <div class="canvas-shell">
+
+    <nav class="canvas-rail" aria-label="Canvas global navigation">
+      <div class="canvas-rail__logo" aria-hidden="true">
+        <img src="assets/logo.png" alt="University of Sussex">
+      </div>
+      <button class="canvas-rail__avatar" type="button" aria-label="Account" tabindex="-1">
+        <img src="assets/icons/avatar.png" alt="">
+      </button>
+      <button class="canvas-rail__icon" type="button" aria-label="Dashboard" tabindex="-1">
+        <svg viewBox="0 0 280 200" xmlns="http://www.w3.org/2000/svg"><path d="M273.09,180.75H197.47V164.47h62.62A122.16,122.16,0,1,0,17.85,142a124,124,0,0,0,2,22.51H90.18v16.29H6.89l-1.5-6.22A138.51,138.51,0,0,1,1.57,142C1.57,65.64,63.67,3.53,140,3.53S278.43,65.64,278.43,142a137.67,137.67,0,0,1-3.84,32.57ZM66.49,87.63,50.24,71.38,61.75,59.86,78,76.12Zm147,0L202,76.12l16.25-16.25,11.51,11.51ZM131.85,53.82v-23h16.29v23Zm15.63,142.3a31.71,31.71,0,0,1-28-16.81c-6.4-12.08-15.73-72.29-17.54-84.25a8.15,8.15,0,0,1,13.58-7.2c8.88,8.21,53.48,49.72,59.88,61.81a31.61,31.61,0,0,1-27.9,46.45ZM121.81,116.2c4.17,24.56,9.23,50.21,12,55.49A15.35,15.35,0,1,0,161,157.3C158.18,152,139.79,133.44,121.81,116.2Z"/></svg>
+      </button>
+      <button class="canvas-rail__icon" type="button" aria-label="Modules" tabindex="-1">
+        <svg viewBox="0 0 260 260" xmlns="http://www.w3.org/2000/svg"><path d="M73.31,198c-11.93,0-22.22,8-24,18.73a26.67,26.67,0,0,0-.3,3.63v.3a22,22,0,0,0,5.44,14.65,22.47,22.47,0,0,0,17.22,8H200V228.19h-134V213.08H200V198Zm21-105.74h90.64V62H94.3ZM79.19,107.34V46.92H200v60.42Zm7.55,30.21V122.45H192.49v15.11ZM71.65,16.71A22.72,22.72,0,0,0,49,39.36V190.88a41.12,41.12,0,0,1,24.32-8h157V16.71ZM33.88,39.36A37.78,37.78,0,0,1,71.65,1.6H245.36V198H215.15v45.32h22.66V258.4H71.65a37.85,37.85,0,0,1-37.76-37.76Z"/></svg>
+      </button>
+      <button class="canvas-rail__icon" type="button" aria-label="Groups" tabindex="-1">
+        <svg viewBox="0 0 200 140" xmlns="http://www.w3.org/2000/svg"><path d="M134.5 129.4c0-1.1 0-19.8-6.2-31.1-4.5-8.5-16.4-12.4-35-19.2-1.7-.6-3.4-1.1-5.1-1.7v-8.5c5.6-5.1 8.5-12.4 8.5-20.3V29.4C96.6 13 83.6 0 67.2 0S37.9 13 37.9 29.4v19.2c0 7.3 3.4 14.7 8.5 20.3v8.5c-1.7.6-3.4 1.1-5.1 1.7-18.6 6.2-30.5 10.7-35 19.2C0 109.6 0 128.8 0 129.4c0 3.4 2.3 5.6 5.6 5.6h123.7c3.5 0 5.7-2.3 5.2-5.6zm-123.2-5.7c.6-5.6 1.7-14.7 3.4-19.8C17 98.8 30 94.3 43.5 89.8c2.8-1.1 5.6-2.3 9-3.4 2.3-.6 4-2.8 4-5.1V66.7c0-1.7-.6-3.4-1.7-4.5-4-3.4-6.2-8.5-6.2-13.6V29.4c0-10.2 7.9-18.1 18.1-18.1s18.1 7.9 18.1 18.1v19.2c0 5.1-2.3 10.2-6.2 13.6-1.1 1.1-1.7 2.8-1.7 4.5v14.7c0 2.3 1.7 4.5 4 5.1 2.8 1.1 6.2 2.3 9 3.4 13.6 5.1 26.6 9.6 28.8 14.1 2.8 5.1 4 13.6 4.5 19.8H11.3zM196 79.1c-2.8-6.2-11.3-9.6-22.6-13.6l-1.7-.6v-3.4c4.5-4 6.8-9.6 6.8-15.8V35c0-12.4-9.6-22-22-22s-22 10.2-22 22v10.7c0 6.2 2.3 11.9 6.8 15.8V65l-1.7.6c-7.3 2.8-13 4.5-16.9 7.3-1.7 1.1-2.3 2.8-2.3 5.1.6 1.7 1.7 3.4 3.4 4.5 7.9 4 12.4 7.3 14.1 10.7 2.3 4.5 4 10.2 5.1 18.1.6 2.3 2.8 4.5 5.6 4.5h45.8c3.4 0 5.6-2.8 5.6-5.1 0-3.9 0-24.3-4-31.6zm-42.9 25.4c-1.1-6.8-2.8-12.4-5.1-16.9-1.7-4-5.1-6.8-9.6-10.2 1.7-1.1 3.4-1.7 5.1-2.3l5.6-2.3c1.7-.6 3.4-2.8 3.4-5.1v-9.6c0-1.7-.6-3.4-2.3-4.5-2.8-1.7-4.5-5.1-4.5-8.5V34.5c0-6.2 4.5-10.7 10.7-10.7s10.7 5.1 10.7 10.7v10.7c0 3.4-1.7 6.2-4.5 8.5-1.1 1.1-2.3 2.8-2.3 4.5v10.2c0 2.3 1.1 4.5 3.4 5.1l5.6 2.3c6.8 2.3 15.3 5.6 16.4 7.9 1.7 2.8 2.8 12.4 2.8 20.9h-35.4z"/></svg>
+      </button>
+      <button class="canvas-rail__icon" type="button" aria-label="Calendar" tabindex="-1">
+        <svg viewBox="0 0 260 290" xmlns="http://www.w3.org/2000/svg"><path d="M197.07,213.38h16.31V197.07H197.07Zm-16.31,16.31V180.76h48.92v48.92Zm-48.92-16.31h16.31V197.07H131.85Zm-16.31,16.31V180.76h48.92v48.92ZM66.62,213.38H82.93V197.07H66.62ZM50.32,229.68V180.76H99.24v48.92Zm146.75-81.53h16.31V131.85H197.07Zm-16.31,16.31V115.54h48.92v48.92Zm-48.92-16.31h16.31V131.85H131.85Zm-16.31,16.31V115.54h48.92v48.92ZM66.62,148.15H82.93V131.85H66.62ZM50.32,164.46V115.54H99.24v48.92ZM34,262.29H246V82.93H34ZM246,66.62V42.16A8.17,8.17,0,0,0,237.84,34H213.38v8.15a8.15,8.15,0,1,1-16.31,0V34H82.93v8.15a8.15,8.15,0,0,1-16.31,0V34H42.16A8.17,8.17,0,0,0,34,42.16V66.62Zm-8.15-48.92a24.49,24.49,0,0,1,24.46,24.46V278.6H17.71V42.16A24.49,24.49,0,0,1,42.16,17.71H66.62V9.55a8.15,8.15,0,0,1,16.31,0v8.15H197.07V9.55a8.15,8.15,0,1,1,16.31,0v8.15Z"/></svg>
+      </button>
+      <div class="canvas-rail__spacer"></div>
+    </nav>
+
+    <aside class="canvas-side" aria-label="Page sections">
+      <div class="canvas-side__term">2025/26 Spring Teaching</div>
+      <ul class="canvas-side__nav">
+        <li><a href="#libraries" class="is-active">Libraries</a></li>
+        <li><a href="#textures">Textures &amp; Materials</a></li>
+        <li><a href="#inspiration">Visual Inspiration</a></li>
+        <li><a href="#tutorials">Tutorials</a></li>
+        <li><a href="#examples">Three.js Examples</a></li>
+        <li><a href="#icons">Icons &amp; Fonts</a></li>
+      </ul>
+    </aside>
+
+    <main class="canvas-main">
+
+      <header class="canvas-header">
+        <span class="canvas-header__logo" aria-hidden="true">
+          <img src="assets/logo.png" alt="">
+        </span>
+        <span class="canvas-header__crumb">H7006: Web 3D Applications</span>
+        <span class="canvas-header__sep">&rsaquo;</span>
+        <span class="canvas-header__crumb">Pages</span>
+        <span class="canvas-header__sep">&rsaquo;</span>
+        <span class="canvas-header__crumb canvas-header__crumb--current">References</span>
+      </header>
+
+      <div class="canvas-body">
+
+        <h1 class="canvas-body__title">References</h1>
+
+        <p class="canvas-body__intro">
+          All assets and code not credited here are my own work. Where
+          third-party material has been incorporated, the licence and how it
+          was used are noted. The three 3D models (character, apple,
+          headphones) were modelled by me in Blender - only textures and
+          materials were sourced externally.
+        </p>
+
+        <h2 class="canvas-section" id="libraries">Libraries</h2>
+        <ul class="refs">
+          <li>
+            <div class="what">Three.js (r160)</div>
+            <div class="where"><a href="https://threejs.org/" target="_blank" rel="noopener">https://threejs.org/</a> - MIT licence</div>
+            <div class="how">
+              Core WebGL renderer, scene graph, geometry, materials, lighting.
+              Add-ons used: <code>GLTFLoader</code> for 3D model loading,
+              <code>EffectComposer</code> + <code>UnrealBloomPass</code> for
+              the wallpaper post-processing chain, <code>OrbitControls</code>
+              for the Models app camera.
+            </div>
+          </li>
+        </ul>
+
+        <h2 class="canvas-section" id="textures">Textures &amp; Materials</h2>
+        <ul class="refs">
+          <li>
+            <div class="what">Apple base colour texture</div>
+            <div class="where"><a href="https://www.texturecan.com/details/185/" target="_blank" rel="noopener">https://www.texturecan.com/details/185/</a></div>
+            <div class="how">
+              Free PBR texture pack from texturecan, used as the base colour
+              and roughness for the green apple model. Modified in Blender via
+              a Cycles node graph (Color Ramp to shift hue toward green, plus
+              a custom paint slot for the handwritten "blue-cat@japan.com"
+              inscription) and baked to flat PBR textures for glTF
+              compatibility.
+            </div>
+          </li>
+          <li>
+            <div class="what">Headphone materials (cup metal, cable, grille cloth)</div>
+            <div class="where"><a href="https://www.blenderkit.com/" target="_blank" rel="noopener">https://www.blenderkit.com/</a> - free assets, royalty-free use</div>
+            <div class="how">
+              Material textures only (brushed aluminium, matte black plastic,
+              speaker grille cloth) were sourced from BlenderKit and applied
+              to the headphone model I built from scratch in Blender. The
+              geometry, UV unwrap, and final PBR setup are my own work.
+            </div>
+          </li>
+          <li>
+            <div class="what">Lily Chou-Chou CD artwork (cover, rear insert and disc label)</div>
+            <div class="where"><a href="https://musicbrainz.org/release/39f4ddea-52d1-4a68-b48a-2c6492bab8b0/cover-art" target="_blank" rel="noopener">Cover Art Archive via MusicBrainz</a> (official Lily Chou-Chou release)</div>
+            <div class="how">
+              I pulled the artwork for this from MusicBrainz, which is where the
+              official cover scans for the release are kept. Three images went
+              onto the model: the front sleeve, the rear insert, and the printed
+              disc label. I built the CD myself in Blender and laid flat (planar)
+              UVs over the sleeve faces and the disc so each scan sits on the
+              geometry without stretching.
+            </div>
+          </li>
+        </ul>
+
+        <h2 class="canvas-section" id="inspiration">Visual Inspiration</h2>
+        <ul class="refs">
+          <li>
+            <div class="what">All About Lily Chou-Chou (リリイ・シュシュのすべて, 2001)</div>
+            <div class="where">Film directed by Shunji Iwai</div>
+            <div class="how">
+              Visual influence for the wallpaper scene (green grass fields,
+              soft cinematic palette), the character's contemplative pose,
+              the green apple as a recurring symbol, and the Sony MDR-style
+              headphones worn by the protagonist. No copyrighted footage or
+              imagery is reproduced in the final submission.
+            </div>
+          </li>
+          <li>
+            <div class="what">macOS interface design (Apple Inc.)</div>
+            <div class="where">Apple macOS Big Sur / Sonoma visual language</div>
+            <div class="how">
+              UI inspiration - dock, traffic-light window controls, menu
+              bar, Notes-style document layout, Safari toolbar and tab bar.
+              All UI elements are built from scratch in HTML/CSS; no Apple
+              assets are bundled.
+            </div>
+          </li>
+          <li>
+            <div class="what">Canvas LMS (University of Sussex)</div>
+            <div class="where">Sussex Canvas instance interface</div>
+            <div class="how">
+              The page chrome for this submission/sitemap/references trio is
+              a visual homage to the university's Canvas LMS. Layout, colour
+              palette (<code>#013035</code>), and typography are reproduced
+              in HTML/CSS; no Canvas code or assets are bundled. The
+              University of Sussex logo is used as a visual reference.
+            </div>
+          </li>
+          <li>
+            <div class="what">Blender (5.x) interface</div>
+            <div class="where"><a href="https://www.blender.org/" target="_blank" rel="noopener">https://www.blender.org/</a> - GNU GPL</div>
+            <div class="how">
+              Visual reference for the Models app chrome (workspace tabs,
+              viewport toolbar, outliner, properties panel). All colours
+              pixel-sampled from real Blender screenshots and reproduced in
+              HTML/CSS - no Blender assets are bundled.
+            </div>
+          </li>
+        </ul>
+
+        <h2 class="canvas-section" id="tutorials">Tutorials &amp; Learning Resources</h2>
+
+        <p>
+          The following YouTube tutorials were referenced while learning the
+          Blender workflows used in this project. I'd never seriously used
+          Blender before this module, and these were essential for getting
+          the character model rigged and the headphones modelled.
+        </p>
+
+        <ul class="refs">
+          <li>
+            <div class="what">"Create a 3D Low Poly Character (even if you've never opened Blender)" - Crashsune Academy</div>
+            <div class="where"><a href="https://www.youtube.com/watch?v=EQHdi5rX5fs" target="_blank" rel="noopener">https://www.youtube.com/watch?v=EQHdi5rX5fs</a></div>
+            <div class="how">
+              Used as the foundational tutorial for the character model.
+              Followed the modelling, UV unwrapping, rigging, and weight
+              painting sections.
+            </div>
+          </li>
+          <li>
+            <div class="what">"Creating a 3D character in Blender - Turnaround &amp; Modelling" - sorry stacy</div>
+            <div class="where"><a href="https://www.youtube.com/watch?v=qO3D7LuV3Ys" target="_blank" rel="noopener">https://www.youtube.com/watch?v=qO3D7LuV3Ys</a></div>
+            <div class="how">
+              Reference for the character's turnaround setup and the
+              head/torso modelling workflow.
+            </div>
+          </li>
+          <li>
+            <div class="what">"Lowpoly 3D Hair - Blender Tutorial" - sorry stacy</div>
+            <div class="where"><a href="https://www.youtube.com/watch?v=kGSChMmW6x4" target="_blank" rel="noopener">https://www.youtube.com/watch?v=kGSChMmW6x4</a></div>
+            <div class="how">
+              Used for the character's hair modelling and weight painting
+              approach.
+            </div>
+          </li>
+          <li>
+            <div class="what">"Creating a 3D character in Blender - UV Unwrapping &amp; Texturing" - sorry stacy</div>
+            <div class="where"><a href="https://www.youtube.com/watch?v=JfuImB0_MrQ" target="_blank" rel="noopener">https://www.youtube.com/watch?v=JfuImB0_MrQ</a></div>
+            <div class="how">
+              Followed for the UV unwrapping and final texturing pass on the
+              character.
+            </div>
+          </li>
+          <li>
+            <div class="what">"Blender 3D Tutorial: Step-by-Step Airpods MAX Headphones" - 4RAYS TECH</div>
+            <div class="where"><a href="https://www.youtube.com/watch?v=jqn-e1kg8zc" target="_blank" rel="noopener">https://www.youtube.com/watch?v=jqn-e1kg8zc</a></div>
+            <div class="how">
+              Reference for the headphone modelling workflow. The end result
+              was adapted to a Sony MDR-G72 form factor rather than the
+              Airpods Max shape.
+            </div>
+          </li>
+        </ul>
+
+        <h2 class="canvas-section" id="examples">Three.js Examples</h2>
+
+        <p>
+          Several Three.js official examples were referenced for the
+          implementation patterns used in this project.
+        </p>
+
+        <ul class="refs">
+          <li>
+            <div class="what">GLTFLoader example</div>
+            <div class="where"><a href="https://threejs.org/examples/?q=gltf#webgl_loader_gltf" target="_blank" rel="noopener">https://threejs.org/examples/?q=gltf#webgl_loader_gltf</a></div>
+            <div class="how">
+              Reference for the async glTF loading pattern used in both the
+              wallpaper scene and the Models app.
+            </div>
+          </li>
+          <li>
+            <div class="what">Post-processing - UnrealBloomPass</div>
+            <div class="where"><a href="https://threejs.org/examples/?q=bloom#webgl_postprocessing_unreal_bloom" target="_blank" rel="noopener">https://threejs.org/examples/?q=bloom#webgl_postprocessing_unreal_bloom</a></div>
+            <div class="how">
+              Reference for the <code>EffectComposer</code> +
+              <code>UnrealBloomPass</code> chain used on the wallpaper scene
+              for the dreamlike highlight bloom.
+            </div>
+          </li>
+          <li>
+            <div class="what">OrbitControls</div>
+            <div class="where"><a href="https://threejs.org/examples/?q=orbit#misc_controls_orbit" target="_blank" rel="noopener">https://threejs.org/examples/?q=orbit#misc_controls_orbit</a></div>
+            <div class="how">
+              Camera control reference for the Models app's Blender-style
+              free-orbit camera.
+            </div>
+          </li>
+          <li>
+            <div class="what">ViewHelper / gizmo</div>
+            <div class="where"><a href="https://threejs.org/examples/?q=helper#webgl_helpers" target="_blank" rel="noopener">https://threejs.org/examples/?q=helper#webgl_helpers</a></div>
+            <div class="how">
+              Reference for the XYZ axis gizmo in the Models app viewport
+              corner. The final implementation is custom (the built-in
+              <code>ViewHelper</code> had a positioning issue inside our
+              window layout).
+            </div>
+          </li>
+        </ul>
+
+        <h2 class="canvas-section" id="icons">Icons &amp; Fonts</h2>
+        <ul class="refs">
+          <li>
+            <div class="what">Dock and menu-bar icons</div>
+            <div class="where"><a href="https://commons.wikimedia.org/" target="_blank" rel="noopener">https://commons.wikimedia.org/</a> - Wikimedia Commons</div>
+            <div class="how">
+              Most of the dock icons (Launchpad, Safari, Spotify, Bin,
+              Messages, Blender) were sourced from Wikimedia Commons under
+              their respective free-use licences. The viewport toolbar icons
+              in the Models app are custom SVGs hand-drawn to match Blender's
+              visual language.
+            </div>
+          </li>
+          <li>
+            <div class="what">Canvas global navigation icons (Dashboard, Modules, Groups, Calendar)</div>
+            <div class="where">Sussex Canvas LMS</div>
+            <div class="how">
+              SVG paths matched to the Sussex Canvas LMS interface for the
+              decorative rail in submission / sitemap / references pages.
+              Used as visual reference only.
+            </div>
+          </li>
+          <li>
+            <div class="what">System fonts only</div>
+            <div class="where">
+              <code>-apple-system, BlinkMacSystemFont, "SF Pro Text"</code>
+            </div>
+            <div class="how">
+              No web fonts loaded. The site falls back through the system
+              stack so it renders in SF Pro on Apple platforms, Segoe UI on
+              Windows, and the default sans-serif elsewhere.
+            </div>
+          </li>
+        </ul>
+
+        <nav class="canvas-foot" aria-label="Pages">
+          <a href="index.html">Home</a>
+          <a href="submission.html">Submission</a>
+          <a href="sitemap.html">Site Map</a>
+          <a href="references.html">References</a>
+        </nav>
+
+      </div>
+    </main>
+
+  </div>
+
+  <script>
+    (function () {
+      const links = document.querySelectorAll(".canvas-side__nav a");
+      const sections = Array.from(links).map(a => document.querySelector(a.getAttribute("href")));
+      const setActive = (idx) => links.forEach((a, i) => a.classList.toggle("is-active", i === idx));
+      let ticking = false;
+      function onScroll() {
+        if (ticking) return; ticking = true;
+        requestAnimationFrame(() => {
+          const top = window.scrollY + 100;
+          let active = 0;
+          sections.forEach((s, i) => { if (s && s.offsetTop <= top) active = i; });
+          setActive(active);
+          ticking = false;
+        });
+      }
+      window.addEventListener("scroll", onScroll, { passive: true });
+      links.forEach((a, i) => a.addEventListener("click", () => setActive(i)));
+    })();
+  </script>
+</body>
+</html>

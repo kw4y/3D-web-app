@@ -1,0 +1,14 @@
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Blender rolling auto-backups (the real .blend files are kept and committed)
+*.blend1
+*.blend2
+*.blend3
+
+# Editor / local
+.vscode/
+*.log
+*.tmp
