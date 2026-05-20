@@ -9,9 +9,6 @@
 <body>
   <div class="canvas-shell">
 
-    <!-- ========================================================
-         OUTER RAIL — global Canvas navigation (decorative)
-         ======================================================== -->
     <nav class="canvas-rail" aria-label="Canvas global navigation">
       <div class="canvas-rail__logo" aria-hidden="true">
         <img src="assets/logo.png" alt="University of Sussex">
@@ -37,9 +34,7 @@
       <div class="canvas-rail__spacer"></div>
     </nav>
 
-    <!-- ========================================================
-         INNER SIDEBAR — per-page section nav
-         ======================================================== -->
+    <!-- sidebar -->
     <aside class="canvas-side" aria-label="Page sections">
       <div class="canvas-side__term">2025/26 Spring Teaching</div>
       <ul class="canvas-side__nav">
@@ -50,9 +45,7 @@
       </ul>
     </aside>
 
-    <!-- ========================================================
-         MAIN — breadcrumb + body
-         ======================================================== -->
+    <!-- main  -->
     <main class="canvas-main">
 
       <header class="canvas-header">
@@ -84,11 +77,11 @@
           </li>
           <li>
             <span class="label">GitHub Codebase</span>
-            <span class="val"><a href="#" class="todo">[TODO: paste GitHub repo URL]</a></span>
+            <span class="val"><a href="https://github.com/kw4y/3D-web-app">https://github.com/kw4y/3D-web-app</a></span>
           </li>
           <li>
             <span class="label">3D Models (.blend + .glb)</span>
-            <span class="val"><a href="#" class="todo">[TODO: paste GitHub /assets/Models URL]</a></span>
+            <span class="val"><a href="https://github.com/kw4y/3D-web-app/tree/main/assets/Models">https://github.com/kw4y/3D-web-app/tree/main/assets/Models</a></span>
           </li>
           <li>
             <span class="label">Local Development</span>
@@ -190,7 +183,7 @@
   </div>
 
   <script>
-    // Scroll-spy: update active state in the sidebar as user scrolls
+    // Scroll
     (function () {
       const links = document.querySelectorAll(".canvas-side__nav a");
       const sections = Array.from(links).map(a => document.querySelector(a.getAttribute("href")));
